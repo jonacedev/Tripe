@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SplashView: View {
+    
+    @State var vm: SplashViewModel
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +23,5 @@ struct SplashView: View {
 }
 
 #Preview {
-    SplashView()
+    SplashAssembly().preview()
 }
