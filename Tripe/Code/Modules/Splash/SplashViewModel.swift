@@ -25,9 +25,7 @@ class SplashViewModel {
     }
     
     func onAppear() {
-        if !DeviceInfo.isRunningInPreview() {
-            checkDevice()
-        }
+        checkDevice()
     }
         
     private func checkDevice() {
