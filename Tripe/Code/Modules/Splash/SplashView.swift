@@ -12,16 +12,15 @@ struct SplashView: View {
     @State var vm: SplashViewModel
     
     var body: some View {
-        VStack {
+        ZStack {
             Text("Splash")
+                .font(.title)
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         mainAppCoordinator.replaceRootWith(.login)
                     }
                 }
-            
         }
-        .padding()
     }
 }
 
