@@ -16,13 +16,8 @@ struct TabBarView: View {
         TabView {
             NavigationStack(path: $homeCoordinator.path) {
                 HomeView()
-                    .navigationDestination(for: Screen.self) { screen in
-                        switch screen {
-                        case .home:
-                            HomeView()
-                        case .profile:
-                            ProfileView()
-                        }
+                    .navigationDestination(for: Screen.self) {
+                        $0.makeView()
                     }
             }
             .environmentObject(homeCoordinator)
@@ -32,13 +27,8 @@ struct TabBarView: View {
             
             NavigationStack(path: $profileCoordinator.path) {
                 ProfileView()
-                    .navigationDestination(for: Screen.self) { screen in
-                        switch screen {
-                        case .home:
-                            HomeView()
-                        case .profile:
-                            ProfileView()
-                        }
+                    .navigationDestination(for: Screen.self) {
+                        $0.makeView()
                     }
             }
             .environmentObject(profileCoordinator)

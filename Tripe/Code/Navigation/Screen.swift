@@ -6,8 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
 
-enum Screen {
+protocol ScreenProtocol {
+    associatedtype ScreenView: View
+    @ViewBuilder func makeView() -> ScreenView
+}
+
+enum Screen: ScreenProtocol {
     case home
     case profile
+    
+    @ViewBuilder func makeView() -> some View {
+        switch self {
+        case .home:
+            HomeView()
+        case .profile:
+            ProfileView()
+        }
+    }
 }

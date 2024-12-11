@@ -15,10 +15,11 @@ class HomeCoordinator: ObservableObject, NavigationManagerProtocol {
     }
     
     func popToLast() {
+        guard !path.isEmpty else { return } 
         path.removeLast()
     }
     
     func popToRoot() {
-        path.removeLast(path.count)
+        path = NavigationPath()
     }
 }

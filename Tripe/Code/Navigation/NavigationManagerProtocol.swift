@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol NavigationManagerProtocol: ObservableObject {
+protocol NavigationManagerProtocol: ObservableObject {    
     var path: NavigationPath { get set }
     func push(_ screen: Screen)
     func popToRoot()
