@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct SplashView: View {
-    
+    @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
     @State var vm: SplashViewModel
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Splash")
+                .onAppear{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        mainAppCoordinator.replaceRootWith(.login)
+                    }
+                }
+            
         }
         .padding()
     }
 }
 
 #Preview {
-    SplashAssembly().preview()
+    SplashAssembly().build()
+        .environmentObject(MainAppCoordinator())
 }

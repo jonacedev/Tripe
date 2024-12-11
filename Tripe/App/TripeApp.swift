@@ -11,7 +11,7 @@ import SwiftUI
 struct TripeApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashAssembly().preview()
+            ContentView()
         }
     }
 }
