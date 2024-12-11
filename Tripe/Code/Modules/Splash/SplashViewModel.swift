@@ -14,9 +14,27 @@ class SplashViewModel {
     
     private var checkVersionUseCase: CheckVersionUseCaseProtocol
     
+    var showJailbreakAlert = false
+    var forceUpdateAlert = false
+    var successCheck = false
+    
     // MARK: - Object lifecycle
     
     init(checkVersionUseCase: CheckVersionUseCaseProtocol) {
         self.checkVersionUseCase = checkVersionUseCase
+    }
+    
+    func onAppear() {
+        if !DeviceInfo.isRunningInPreview() {
+            checkDevice()
+        }
+    }
+        
+    private func checkDevice() {
+        if DeviceInfo.isSimulator() || !DeviceInfo.isJailbreak() {
+            successCheck = true
+        } else {
+            showJailbreakAlert = true
+        }
     }
 }

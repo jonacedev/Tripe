@@ -1,0 +1,84 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "button_ok" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aceptar"
+          }
+        }
+      }
+    },
+    "Cerrar sesion" : {
+
+    },
+    "Home View" : {
+
+    },
+    "house" : {
+
+    },
+    "Ir al home" : {
+
+    },
+    "Ir al login" : {
+
+    },
+    "Ir al registro" : {
+
+    },
+    "jailbreak_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your device is jailbroken. Please use a non-jailbroken device."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your device is jailbroken. Please use a non-jailbroken device."
+          }
+        }
+      }
+    },
+    "jailbreak_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device issue"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device issue"
+          }
+        }
+      }
+    },
+    "Navigate to profile" : {
+
+    },
+    "Profile" : {
+
+    },
+    "Profile View" : {
+
+    }
+  },
+  "version" : "1.0"
+}
