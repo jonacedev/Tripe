@@ -22,6 +22,7 @@ struct HomeView: View {
     @ViewBuilder private func content() -> some View {
         VStack(spacing: 20) {
             Text("Home View")
+                .font(.regularTextSizeMOpenSans)
             
             Button("Navigate to profile") {
                 homeCoordinator.push(.profile)
