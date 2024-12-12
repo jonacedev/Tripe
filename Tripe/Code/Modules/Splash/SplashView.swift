@@ -40,6 +40,16 @@ struct SplashView: View {
                 dismissButton: .default(Text("button_ok".localized), action: { exit(0)})
             )
         }
+        
+        .alert(isPresented: $vm.forceUpdateAlert) {
+            Alert(
+                title: Text("force_update_title".localized),
+                message: Text("force_update_description".localized),
+                dismissButton: .default(Text("button_ok".localized), action: {
+                    UIApplication.shared.openAppStore()
+                })
+            )
+        }
     }
 }
 

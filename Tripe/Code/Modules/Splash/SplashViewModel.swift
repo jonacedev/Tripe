@@ -25,11 +25,15 @@ class SplashViewModel: BaseViewModel {
     }
     
     func onAppear() {
-        checkDevice()
+        checkVersionUseCase.checkVersion(success: {
+            self.checkJailbreak()
+        }, failure: {
+            self.forceUpdateAlert = true
+        })
     }
         
-    private func checkDevice() {
-        if DeviceInfo.isSimulator() || !DeviceInfo.isJailbreak() {
+    private func checkJailbreak() {
+        if !DeviceInfo.isJailbreak() {
             successCheck = true
         } else {
             showJailbreakAlert = true

@@ -7,7 +7,7 @@
 
 
 protocol CheckVersionDataManagerProtocol {
-    func checkVersion() async throws -> String?
+    func checkVersion(success: @escaping () -> Void, failure: @escaping () -> Void)
 }
 
 class CheckVersionDataManager {
@@ -24,7 +24,7 @@ class CheckVersionDataManager {
 }
 
 extension CheckVersionDataManager: CheckVersionDataManagerProtocol {
-    func checkVersion() async throws -> String? {
-        try await apiClient.checkVersion()
+    func checkVersion(success: @escaping () -> Void, failure: @escaping () -> Void) {
+        apiClient.checkVersion(success: success, failure: failure)
     }
 }

@@ -35,6 +35,40 @@
         }
       }
     },
+    "force_update_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es necesario actualizar la aplicación"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es necesario actualizar la aplicación"
+          }
+        }
+      }
+    },
+    "force_update_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hay una versión más reciente disponible"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hay una versión más reciente disponible"
+          }
+        }
+      }
+    },
     "jailbreak_description" : {
       "extractionState" : "manual",
       "localizations" : {

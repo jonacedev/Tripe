@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CheckVersionUseCaseProtocol {
-    func checkVersion() async throws -> String?
+    func checkVersion(success: @escaping () -> Void, failure: @escaping () -> Void)
 }
 
 class CheckVersionUseCase {
@@ -25,7 +25,7 @@ class CheckVersionUseCase {
 }
 
 extension CheckVersionUseCase: CheckVersionUseCaseProtocol {
-    func checkVersion() async throws -> String? {
-        try await dataManager.checkVersion()
+    func checkVersion(success: @escaping () -> Void, failure: @escaping () -> Void) {
+        dataManager.checkVersion(success: success, failure: failure)
     }
 }
