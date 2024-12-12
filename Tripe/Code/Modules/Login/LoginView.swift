@@ -14,11 +14,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Button(action: {
-                // Forzar un crash para Crashlytics
-                fatalError("Forzado de crash para pruebas de Crashlytics.")
-                
-                // Navegación al registro
-                // mainAppCoordinator.replaceRootWith(.register)
+                mainAppCoordinator.replaceRootWith(.register)
             }, label: {
                 Text("Ir al registro")
             })
