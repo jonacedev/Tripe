@@ -8,15 +8,21 @@
 import SwiftUI
 
 class LoginAssembly {
-
+    
     // MARK: - Private Functions
-
+    
     func build() -> LoginView {
-        let viewModel: LoginViewModel = LoginViewModel()
+        let firebaseLoginUseCase = createFirebaseLoginUseCase()
+        let viewModel: LoginViewModel = LoginViewModel(firebaseLoginUseCase: firebaseLoginUseCase)
         return LoginView(vm: viewModel)
     }
 }
 
 extension LoginAssembly {
-   
+    func createFirebaseLoginUseCase() -> FirebaseLoginUseCaseProtocol {
+        let apiClient: FirebaseLoginAPIClientProtocol = FirebaseLoginAPIClient()
+        let dataManager: FirebaseLoginDataManagerProtocol = FirebaseLoginDataManager(apiClient: apiClient)
+        
+        return FirebaseLoginUseCase(dataManager: dataManager)
+    }
 }

@@ -5,7 +5,6 @@
 //  Created by Jonathan Miguel Onrubia Solis on 10/12/24.
 //
 
-
 protocol CheckVersionDataManagerProtocol {
     func checkVersion(success: @escaping () -> Void, failure: @escaping () -> Void)
 }

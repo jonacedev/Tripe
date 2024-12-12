@@ -26,4 +26,12 @@ class BaseViewModel {
         showError = true
         errorToShow = error
     }
+    
+    func showLoading() {
+        isLoading = true
+    }
+    
+    func hideLoading() {
+        isLoading = false
+    }
 }

@@ -10,8 +10,6 @@ import SwiftUI
 struct LoginView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
     @State var vm: LoginViewModel
-    @State var email: String = ""
-    @State var password: String = ""
     
     var body: some View {
         BaseView(
@@ -48,14 +46,20 @@ struct LoginView: View {
                 Text("email_label".localized)
                     .font(.semiBoldTextSizeMOpenSans)
                 
-                TPTextField(placeholder: "email_label_placeholder".localized, text: $email)
+                TPTextField(
+                    placeholder: "email_label_placeholder".localized,
+                    text: $vm.email
+                )
             }
             
             VStack(alignment: .leading, spacing: 10) {
                 Text("password_label".localized)
                     .font(.semiBoldTextSizeMOpenSans)
                 
-                TPSecureTextField(placeholder: "password_label_placeholder".localized, text: $password)
+                TPSecureTextField(
+                    placeholder: "password_label_placeholder".localized,
+                    text: $vm.password
+                )
             }
         }
     }
@@ -63,11 +67,12 @@ struct LoginView: View {
     @ViewBuilder private func vwAccessButtons() -> some View {
         VStack(spacing: 35) {
             TPMainButton(title: "login_accept".localized) {
-                print("")
+                // TODO: WHEN REGISTER FINISHED REPLACE THIS WITH MAKE LOGIN FUNCTION
+                mainAppCoordinator.replaceRootWith(.tabBar)
             }
             
             HStack(alignment: .center) {
-                //TODO: Crear componente TPDivider para no repetir codigo del rectangle
+                //TODO: Crear componente TPDivider en carpeta Other para no repetir codigo del rectangle
                 Rectangle()
                     .frame(height: 1)
                     .foregroundStyle(Color.dividerDefault)
@@ -99,6 +104,15 @@ struct LoginView: View {
                     .font(.boldTextSizeMOpenSans)
                     .underline()
             })
+        }
+    }
+}
+
+extension LoginView {
+    private func makeLogin() {
+        Task {
+            await vm.makeLogin()
+            mainAppCoordinator.replaceRootWith(.tabBar)
         }
     }
 }

@@ -1,34 +1,22 @@
 //
-//  FirebaseAuthAPIClient.swift
+//  FirebaseLoginAPIClientProtocol.swift
 //  Tripe
 //
-//  Created by Jonathan Miguel Onrubia Solis on 12/12/24.
+//  Created by Jonathan Miguel Onrubia Solis on 13/12/24.
 //
 
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
-class FirebaseAuthAPIClient {
+protocol FirebaseRegisterAPIClientProtocol {
+    func registerUser(email: String, password: String, username: String) async throws
+}
+
+class FirebaseRegisterAPIClient: FirebaseRegisterAPIClientProtocol {
     
     // MARK: - Auth methods
     
-    @MainActor
-    func login(email: String, password: String) async throws {
-        do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            let userModel = UserModel(id: result.user.uid, username: result.user.displayName ?? "", email: result.user.email ?? "")
-            
-            // Save the user data locally
-            let encodedSession = try Firestore.Encoder().encode(userModel)
-            UserDefaults.standard.set(encodedSession, forKey: "userSession")
-        } catch {
-            print("Login error: \(error.localizedDescription)")
-            throw error
-        }
-    }
-    
-    @MainActor
     func registerUser(email: String, password: String, username: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
@@ -42,8 +30,7 @@ class FirebaseAuthAPIClient {
         }
     }
     
-    @MainActor
-    func uploadUserData(user: UserModel) async throws {
+    private func uploadUserData(user: UserModel) async throws {
         do {
             let userData = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(userData)
