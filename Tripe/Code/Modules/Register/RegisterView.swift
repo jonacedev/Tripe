@@ -12,6 +12,13 @@ struct RegisterView: View {
     @State var vm: RegisterViewModel
     
     var body: some View {
+        BaseView(
+            content: content,
+            vm: vm
+        )
+    }
+    
+    @ViewBuilder private func content() -> some View {
         VStack(spacing: 20) {
             Button(action: {
                 mainAppCoordinator.replaceRootWith(.tabBar)
@@ -25,7 +32,6 @@ struct RegisterView: View {
                 Text("Ir al login")
             })
         }
-        .handleErrors(vm: vm)
     }
 }
 

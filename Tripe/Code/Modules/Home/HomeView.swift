@@ -13,13 +13,20 @@ struct HomeView: View {
     @State var vm: HomeViewModel
     
     var body: some View {
+        BaseView(
+            content: content,
+            vm: vm
+        )
+    }
+    
+    @ViewBuilder private func content() -> some View {
         VStack(spacing: 20) {
             Text("Home View")
+            
             Button("Navigate to profile") {
                 homeCoordinator.push(.profile)
             }
         }
-        .handleErrors(vm: vm)
     }
 }
 

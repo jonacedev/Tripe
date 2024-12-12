@@ -15,6 +15,7 @@ class BaseViewModel {
     
     var showError: Bool = false
     var errorToShow: BaseError?
+    var isLoading: Bool = false
     
     func resetError() {
         showError = false

@@ -10,6 +10,7 @@ import SwiftUI
 class MainAppCoordinator: ObservableObject {
     @Published var currentRoot: RootScreen = .splash
     @Published var error: BaseError?
+    @Published var isLoading = false
     
     func replaceRootWith(_ root: RootScreen) {
         withAnimation {
@@ -23,5 +24,13 @@ class MainAppCoordinator: ObservableObject {
     
     func hideError() {
         error = nil
+    }
+    
+    func showLoading() {
+        isLoading = true
+    }
+    
+    func hideLoading() {
+        isLoading = false
     }
 }

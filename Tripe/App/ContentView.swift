@@ -27,6 +27,7 @@ struct ContentView: View {
             .environmentObject(mainAppCoordinator)
             
             errorAlert()
+            loader()
         }
     }
 }
@@ -37,6 +38,12 @@ private extension ContentView {
             BaseErrorAlert(error: error, onAccept: {
                 mainAppCoordinator.hideError()
             })
+        }
+    }
+    
+    @ViewBuilder func loader() -> some View {
+        if mainAppCoordinator.isLoading {
+            BaseLoader()
         }
     }
 }
