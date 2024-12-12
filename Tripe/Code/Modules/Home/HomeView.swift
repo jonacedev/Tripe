@@ -8,18 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
     @EnvironmentObject var homeCoordinator: HomeCoordinator
+    @State var vm: HomeViewModel
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             Text("Home View")
-            Button("Navigate to profile", action: {
+            Button("Navigate to profile") {
                 homeCoordinator.push(.profile)
-            })
+            }
         }
+        .handleErrors(vm: vm)
     }
 }
 
 #Preview {
-    HomeView()
+    HomeAssembly().build()
+        .environmentObject(MainAppCoordinator())
+        .environmentObject(HomeCoordinator())
 }

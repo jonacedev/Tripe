@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class SplashViewModel {
+class SplashViewModel: BaseViewModel {
     
     // MARK: - Properties
     

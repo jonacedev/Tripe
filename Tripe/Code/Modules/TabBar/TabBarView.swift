@@ -15,7 +15,7 @@ struct TabBarView: View {
     var body: some View {
         TabView {
             NavigationStack(path: $homeCoordinator.path) {
-                HomeView()
+                HomeAssembly().build()
                     .navigationDestination(for: Screen.self) {
                         $0.makeView()
                     }
@@ -26,7 +26,7 @@ struct TabBarView: View {
             }
             
             NavigationStack(path: $profileCoordinator.path) {
-                ProfileView()
+                ProfileAssembly().build()
                     .navigationDestination(for: Screen.self) {
                         $0.makeView()
                     }

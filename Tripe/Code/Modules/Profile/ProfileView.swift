@@ -9,19 +9,21 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
-    @EnvironmentObject var homeCoordinator: HomeCoordinator
+    @State var vm: ProfileViewModel
     
     var body: some View {
         VStack {
             Text("Profile View")
             
-            Button("Cerrar sesion", action: {
+            Button("closeSession".localized, action: {
                 mainAppCoordinator.replaceRootWith(.login)
             })
         }
+        .handleErrors(vm: vm)
     }
 }
 
 #Preview {
-    ProfileView()
+    ProfileAssembly().build()
+        .environmentObject(MainAppCoordinator())
 }

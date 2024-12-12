@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
+    @State var vm: LoginViewModel
     
     var body: some View {
         VStack {
@@ -18,10 +19,11 @@ struct LoginView: View {
                 Text("Ir al registro")
             })
         }
-        .padding()
+        .handleErrors(vm: vm)
     }
 }
 
 #Preview {
-    LoginView()
+    LoginAssembly().build()
+        .environmentObject(MainAppCoordinator())
 }

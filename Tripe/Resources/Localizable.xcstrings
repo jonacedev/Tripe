@@ -18,23 +18,28 @@
         }
       }
     },
-    "Cerrar sesion" : {
-
-    },
     "Home View" : {
-
+      "shouldTranslate" : false
     },
     "house" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "house"
+          }
+        }
+      },
+      "shouldTranslate" : false
     },
     "Ir al home" : {
-
+      "shouldTranslate" : false
     },
     "Ir al login" : {
-
+      "shouldTranslate" : false
     },
     "Ir al registro" : {
-
+      "shouldTranslate" : false
     },
     "jailbreak_description" : {
       "extractionState" : "manual",
@@ -71,13 +76,13 @@
       }
     },
     "Navigate to profile" : {
-
+      "shouldTranslate" : false
     },
     "Profile" : {
-
+      "shouldTranslate" : false
     },
     "Profile View" : {
-
+      "shouldTranslate" : false
     }
   },
   "version" : "1.0"

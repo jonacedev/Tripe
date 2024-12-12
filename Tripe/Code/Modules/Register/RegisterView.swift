@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
+    @State var vm: RegisterViewModel
     
     var body: some View {
         VStack(spacing: 20) {
@@ -24,10 +25,11 @@ struct RegisterView: View {
                 Text("Ir al login")
             })
         }
-        .padding()
+        .handleErrors(vm: vm)
     }
 }
 
 #Preview {
-    RegisterView()
+    RegisterAssembly().build()
+        .environmentObject(MainAppCoordinator())
 }

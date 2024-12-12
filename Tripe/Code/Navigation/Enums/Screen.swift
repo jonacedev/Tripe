@@ -20,9 +20,9 @@ enum Screen: ScreenProtocol {
     @ViewBuilder func makeView() -> some View {
         switch self {
         case .home:
-            HomeView()
+            HomeAssembly().build()
         case .profile:
-            ProfileView()
+            ProfileAssembly().build()
         }
     }
 }
