@@ -72,10 +72,11 @@ struct LoginView: View {
             }
             
             HStack(alignment: .center) {
-                //TODO: Crear componente TPDivider en carpeta Other para no repetir codigo del rectangle
+                // TODO: Crear componente TPDivider en carpeta Other para no repetir codigo del rectangle
                 Rectangle()
                     .frame(height: 1)
                     .foregroundStyle(Color.dividerDefault)
+                // TODO: Añadir "o" a localizables "other_label_title"
                 Text("o")
                     .foregroundColor(Color.placeholderDefault)
                     .padding(.horizontal, 10)
