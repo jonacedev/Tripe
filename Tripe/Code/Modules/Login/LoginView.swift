@@ -21,16 +21,16 @@ struct LoginView: View {
     @ViewBuilder private func content() -> some View {
         VStack(spacing: 20) {
             
-            Text("welcome_title".localized)
+            Text("welcome_title")
                 .font(.semiBoldTextLargeTitleOpenSans)
                 .padding(.top, 40)
             
             Spacer()
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Email")
+                Text("email_label")
                     .font(.headline)
-                TextField("Introduce tu email", text: .constant(""))
+                TextField("introduce_your_email", text: .constant(""))
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
@@ -38,16 +38,16 @@ struct LoginView: View {
             .padding(.vertical, 10)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Contraseña")
+                Text("password_label")
                     .font(.headline)
-                TextField("Introduce tu contraseña", text: .constant(""))
+                TextField("introduce_your_password", text: .constant(""))
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(8)
             }
             .padding(.vertical, 10)
             
-            MainButton(title: "login_accept".localized) {
+            MainButton(title: "login_accept") {
                 print("")
             }
             
@@ -70,11 +70,11 @@ struct LoginView: View {
             }
             
             HStack {
-                Text("¿Aún no tienes cuenta?")
+                Text("not_having_account_yet")
                 Button(action: {
                     mainAppCoordinator.replaceRootWith(.register)
                 }, label: {
-                    Text("Regístrate")
+                    Text("register_at")
                         .foregroundStyle(.black)
                         .underline()
                 })

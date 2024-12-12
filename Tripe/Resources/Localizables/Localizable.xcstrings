@@ -7,7 +7,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Iniciar sesion con Apple"
+            "value" : "Sign in with Apple"
           }
         },
         "es" : {
@@ -24,7 +24,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aceptar"
+            "value" : "Accept"
           }
         },
         "es" : {
@@ -35,13 +35,30 @@
         }
       }
     },
+    "email_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
+    },
     "force_update_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Es necesario actualizar la aplicación"
+            "value" : "The application needs to be updated"
           }
         },
         "es" : {
@@ -58,7 +75,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hay una versión más reciente disponible"
+            "value" : "A newer version is available"
           }
         },
         "es" : {
@@ -69,13 +86,47 @@
         }
       }
     },
+    "introduce_your_email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your email address"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce tu email"
+          }
+        }
+      }
+    },
+    "introduce_your_password" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your password"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce tu contraseña"
+          }
+        }
+      }
+    },
     "jailbreak_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your device is jailbroken. Please use a non-jailbroken device."
+            "value" : "Your device is jailbroken. Please use an unjailbroken device."
           }
         },
         "es" : {
@@ -121,18 +172,69 @@
         }
       }
     },
+    "not_having_account_yet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't have an account yet?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Aun no tienes cuenta?"
+          }
+        }
+      }
+    },
+    "password_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contraseña"
+          }
+        }
+      }
+    },
+    "register_at" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Register at"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regístrate"
+          }
+        }
+      }
+    },
     "welcome_title" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenidos"
+            "value" : "Welcome"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Bienvenidos"
           }
         }
