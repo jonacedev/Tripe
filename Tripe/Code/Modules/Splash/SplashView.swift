@@ -14,8 +14,7 @@ struct SplashView: View {
     
     var body: some View {
         ZStack {
-            // TODO: Use this black "000000e8"
-            Color.black.opacity(0.95)
+            Color.primary
                 .ignoresSafeArea()
             
             Image("tripeLogo")

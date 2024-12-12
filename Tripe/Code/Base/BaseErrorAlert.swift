@@ -24,7 +24,7 @@ struct BaseErrorAlert: View {
             }
             .padding()
             .foregroundColor(.white)
-            .background(Color.black.opacity(0.95))
+            .background(Color.primary)
             .cornerRadius(10)
             .shadow(radius: 5)
             
