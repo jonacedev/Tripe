@@ -15,7 +15,7 @@ public extension Color {
     
     // MARK: - Primary
     
-    static let primary = named("primaryColor")
+    static let primaryApp = named("primaryColor")
     
     // MARK: - Inputs
     
