@@ -17,10 +17,9 @@ struct TPAppleCustomButton: View {
                 Image(systemName: "apple.logo")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 7, height: 13, alignment: .center)
+                    .frame(width: 8, height: 14, alignment: .center)
                 Text("apple_btn_title".localized)
-                    .font(.system(size: 16))
-                    .fontWeight(.medium)
+                    .font(.semiBoldTextSizeMOpenSans)
             }
             .frame(maxWidth: .infinity)
             .frame(height: BaseConstants.buttonDefaultHeight)

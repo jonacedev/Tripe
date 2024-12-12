@@ -20,4 +20,8 @@ public extension Color {
     // MARK: - Inputs
     
     static let placeholderDefault = named("placeholderColor")
+    
+    // MARK: - Others
+    
+    static let dividerDefault = named("dividerColor")
 }

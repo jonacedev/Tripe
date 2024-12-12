@@ -27,10 +27,6 @@ struct HomeView: View {
             Button("Navigate to profile") {
                 homeCoordinator.push(.profile)
             }
-            
-            TPAppleCustomButton(action: {
-                
-            })
         }
         .padding(.horizontal, BaseConstants.generalPadding)
     }

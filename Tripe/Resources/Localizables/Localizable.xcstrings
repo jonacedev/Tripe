@@ -52,6 +52,23 @@
         }
       }
     },
+    "email_label_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your email address"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce tu email"
+          }
+        }
+      }
+    },
     "force_update_description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -82,40 +99,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hay una versión más reciente disponible"
-          }
-        }
-      }
-    },
-    "introduce_your_email" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter your email address"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Introduce tu email"
-          }
-        }
-      }
-    },
-    "introduce_your_password" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter your password"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Introduce tu contraseña"
           }
         }
       }
@@ -155,7 +138,6 @@
       }
     },
     "login_accept" : {
-      "comment" : "Login",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -172,7 +154,7 @@
         }
       }
     },
-    "not_having_account_yet" : {
+    "not_account_question" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -206,7 +188,24 @@
         }
       }
     },
-    "register_at" : {
+    "password_label_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your password"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introduce tu contraseña"
+          }
+        }
+      }
+    },
+    "register_link" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -235,7 +234,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenidos"
+            "value" : "Bienvenido"
           }
         }
       }
