@@ -70,20 +70,8 @@ struct LoginView: View {
                 // TODO: WHEN REGISTER FINISHED REPLACE THIS WITH MAKE LOGIN FUNCTION
                 mainAppCoordinator.replaceRootWith(.tabBar)
             }
-            
-            HStack(alignment: .center) {
-                // TODO: Crear componente TPDivider en carpeta Other para no repetir codigo del rectangle
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundStyle(Color.dividerDefault)
-                // TODO: Añadir "o" a localizables "other_label_title"
-                Text("o")
-                    .foregroundColor(Color.placeholderDefault)
-                    .padding(.horizontal, 10)
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundStyle(Color.dividerDefault)
-            }
+           
+            TPDivider()
             
             TPAppleCustomButton {
                 print("")

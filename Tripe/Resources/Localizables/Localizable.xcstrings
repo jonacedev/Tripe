@@ -171,6 +171,23 @@
         }
       }
     },
+    "other_label_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "o"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "o"
+          }
+        }
+      }
+    },
     "password_label" : {
       "extractionState" : "manual",
       "localizations" : {
