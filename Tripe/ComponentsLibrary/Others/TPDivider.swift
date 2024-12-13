@@ -9,17 +9,9 @@ import SwiftUI
 
 struct TPDivider: View {
     var body: some View {
-        HStack(alignment: .center) {
-            Rectangle()
-                .frame(height: 1)
-                .foregroundStyle(Color.dividerDefault)
-            Text("o")
-                .foregroundColor(Color.placeholderDefault)
-                .padding(.horizontal, 10)
-            Rectangle()
-                .frame(height: 1)
-                .foregroundStyle(Color.dividerDefault)
-        }
+        Rectangle()
+            .frame(height: 1)
+            .foregroundStyle(Color.dividerDefault)
     }
 }
 

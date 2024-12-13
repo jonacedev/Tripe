@@ -71,7 +71,13 @@ struct LoginView: View {
                 mainAppCoordinator.replaceRootWith(.tabBar)
             }
            
-            TPDivider()
+            HStack(alignment: .center) {
+                TPDivider()
+                Text("other_label_title".localized)
+                    .foregroundColor(Color.placeholderDefault)
+                    .padding(.horizontal, 10)
+                TPDivider()
+            }
             
             TPAppleCustomButton {
                 print("")
