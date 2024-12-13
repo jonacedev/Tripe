@@ -24,7 +24,7 @@ struct TPAppleCustomButton: View {
             .frame(maxWidth: .infinity)
             .frame(height: BaseConstants.buttonDefaultHeight)
             .foregroundStyle(Color.white)
-            .background(Color.black)
+            .background(Color.primaryApp)
             .clipShape(.rect(cornerRadius: BaseConstants.cornerRadiusDefault))
         })
     }

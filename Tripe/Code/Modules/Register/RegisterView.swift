@@ -19,17 +19,85 @@ struct RegisterView: View {
     }
     
     @ViewBuilder private func content() -> some View {
-        VStack(spacing: 20) {
-            Button(action: {
+        VStack(spacing: 0) {
+            vwHeader()
+                .padding(.bottom, 70)
+            vwInputs()
+                .padding(.bottom, 30)
+            vwAccessButton()
+                .padding(.bottom, 40)
+            Divider()
+                .padding(.bottom, 40)
+            vwFooter()
+                .padding(.bottom, 40)
+            
+            Spacer()
+        }
+        .padding(.horizontal, BaseConstants.generalPadding)
+        .padding(.top, 70)
+    }
+    
+    @ViewBuilder private func vwHeader() -> some View {
+        Text("register_title")
+            .font(.semiBoldTextLargeTitleOpenSans)
+    }
+    
+    @ViewBuilder private func vwInputs() -> some View {
+        VStack(spacing: 35) {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("username_label".localized)
+                    .font(.semiBoldTextSizeMOpenSans)
+                
+                TPTextField(
+                    placeholder: "username_label_placeholder".localized,
+                    text: $vm.email
+                )
+            }
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text("email_label".localized)
+                    .font(.semiBoldTextSizeMOpenSans)
+                
+                TPTextField(
+                    placeholder: "email_label_placeholder".localized,
+                    text: $vm.email
+                )
+            }
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Text("password_label".localized)
+                    .font(.semiBoldTextSizeMOpenSans)
+                
+                TPTextField(
+                    placeholder: "password_label_placeholder".localized,
+                    text: $vm.email
+                )
+            }
+        }
+    }
+    
+    @ViewBuilder private func vwAccessButton() -> some View {
+        VStack(spacing: 35) {
+            TPMainButton(title: "continue_label".localized) {
+                // TODO: WHEN REGISTER FINISHED REPLACE THIS WITH MAKE LOGIN FUNCTION
                 mainAppCoordinator.replaceRootWith(.tabBar)
-            }, label: {
-                Text("Ir al home")
-            })
+            }
+        }
+    }
+    
+    @ViewBuilder private func vwFooter() -> some View {
+        HStack {
+            Text("already_have_account_question".localized)
+                .font(.boldTextSizeMOpenSans)
+                .foregroundStyle(Color.primaryApp)
             
             Button(action: {
                 mainAppCoordinator.replaceRootWith(.login)
             }, label: {
-                Text("Ir al login")
+                Text("login_link".localized)
+                    .foregroundStyle(Color.primaryApp)
+                    .font(.boldTextSizeMOpenSans)
+                    .underline()
             })
         }
     }

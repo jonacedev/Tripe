@@ -9,5 +9,7 @@ import Foundation
 
 @Observable
 class RegisterViewModel: BaseViewModel {
+    var email: String = ""
+    var password: String = ""
     
 }
