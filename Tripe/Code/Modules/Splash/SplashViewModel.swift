@@ -42,11 +42,11 @@ class SplashViewModel: BaseViewModel {
     }
     
     
-    func isUserSessionOpened() -> Bool {
-        if let user = Auth.auth().currentUser {
-            UserSessionManager.shared.userSession = user
-            return true
-        }
-        return false
-    }
+//    func isUserSessionOpened() -> Bool {
+//        if let user = Auth.auth().currentUser {
+//            UserSessionManager.shared.userSession = user
+//            return true
+//        }
+//        return false
+//    }
 }

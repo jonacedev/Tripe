@@ -35,9 +35,7 @@ struct RegisterView: View {
         }
         .padding(.horizontal, BaseConstants.generalPadding)
         .padding(.top, 70)
-        .onChange(of: vm.registerSuccess) {
-            mainAppCoordinator.replaceRootWith(.tabBar)
-        }
+        .ignoresSafeArea(.keyboard)
     }
     
     @ViewBuilder private func vwHeader() -> some View {
@@ -108,7 +106,9 @@ struct RegisterView: View {
 extension RegisterView {
     private func registerUser() {
         Task {
+            mainAppCoordinator.showLoading()
             await vm.registerUser()
+            mainAppCoordinator.hideLoading()
         }
     }
 }

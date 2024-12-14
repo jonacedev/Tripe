@@ -13,7 +13,8 @@ class LoginAssembly {
     
     func build() -> LoginView {
         let firebaseLoginUseCase = createFirebaseLoginUseCase()
-        let viewModel: LoginViewModel = LoginViewModel(firebaseLoginUseCase: firebaseLoginUseCase)
+        let firebaseAppleLoginUseCase = createFirebaseAppleLoginUseCase()
+        let viewModel: LoginViewModel = LoginViewModel(firebaseLoginUseCase: firebaseLoginUseCase, firebaseAppleLoginUseCase: firebaseAppleLoginUseCase)
         return LoginView(vm: viewModel)
     }
 }
@@ -24,5 +25,12 @@ extension LoginAssembly {
         let dataManager: FirebaseLoginDataManagerProtocol = FirebaseLoginDataManager(apiClient: apiClient)
         
         return FirebaseLoginUseCase(dataManager: dataManager)
+    }
+    
+    func createFirebaseAppleLoginUseCase() -> FirebaseAppleLoginUseCaseProtocol {
+        let apiClient: FirebaseAuthAPIClientProtocol = FirebaseAuthAPIClient()
+        let dataManager: FirebaseAppleLoginDataManagerProtocol = FirebaseAppleLoginDataManager(apiClient: apiClient)
+        
+        return FirebaseAppleLoginUseCase(dataManager: dataManager)
     }
 }

@@ -11,10 +11,10 @@ class SplashAssembly {
 
     // MARK: - Private Functions
 
-    func build() -> SplashView {
+    func build(splashLoaded: Binding<Bool>) -> SplashView {
         let checkVersionUseCase = createCheckVersionUseCase()
         let viewModel: SplashViewModel = SplashViewModel(checkVersionUseCase: checkVersionUseCase)
-        return SplashView(vm: viewModel)
+        return SplashView(vm: viewModel, splashLoaded: splashLoaded)
     }
 }
 

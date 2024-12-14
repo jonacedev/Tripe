@@ -9,14 +9,14 @@ import SwiftUI
 
 struct OnTapHideKeyboardModifier: ViewModifier {
     func body(content: Content) -> some View {
-        ZStack {
-            content
-        }
-        .contentShape(Rectangle())
-        .highPriorityGesture(TapGesture().onEnded({
-            hideKeyboard()
-        }))
-        
+        content
+            .background(
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        hideKeyboard()
+                    }
+            )
     }
     
     private func hideKeyboard() {

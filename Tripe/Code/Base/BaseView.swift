@@ -13,10 +13,8 @@ struct BaseView<Content: View>: View {
     @State var vm: BaseViewModel
 
     var body: some View {
-        ZStack {
-            content()
-        }
-        .handleErrors(vm: vm)
-        .handleLoader(vm: vm)
+        content()
+            .onTapHideKeyboard()
+            .handleErrors(vm: vm)
     }
 }
