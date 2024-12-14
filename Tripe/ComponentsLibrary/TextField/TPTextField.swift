@@ -18,7 +18,8 @@ struct TPTextField: View {
                 .font(.regularTextSizeMOpenSans)
                 .padding(.horizontal)
         }
-        .frame(maxWidth: .infinity, maxHeight: BaseConstants.buttonDefaultHeight)
+        .frame(maxWidth: .infinity)
+        .frame(height: BaseConstants.buttonDefaultHeight)
         .background(
             RoundedRectangle(cornerRadius: BaseConstants.cornerRadiusDefault)
                 .stroke(Color.dividerDefault, lineWidth: BaseConstants.lineWidth)
