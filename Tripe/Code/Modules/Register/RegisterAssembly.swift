@@ -21,7 +21,7 @@ class RegisterAssembly {
 
 extension RegisterAssembly {
     func createFirebaseRegisterUseCase() -> FirebaseRegisterUseCaseProtocol {
-        let apiClient: FirebaseRegisterAPIClientProtocol = FirebaseRegisterAPIClient()
+        let apiClient: FirebaseAuthAPIClientProtocol = FirebaseAuthAPIClient()
         let dataManager: FirebaseRegisterDataManagerProtocol = FirebaseRegisterDataManager(apiClient: apiClient)
         
         return FirebaseRegisterUseCase(dataManager: dataManager)

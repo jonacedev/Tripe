@@ -9,13 +9,23 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
-protocol FirebaseRegisterAPIClientProtocol {
+protocol FirebaseAuthAPIClientProtocol {
+    func makeLogin(email: String, password: String) async throws
     func registerUser(email: String, password: String, username: String) async throws
 }
 
-class FirebaseRegisterAPIClient: FirebaseRegisterAPIClientProtocol {
+class FirebaseAuthAPIClient: FirebaseAuthAPIClientProtocol {
     
     // MARK: - Auth methods
+    
+    func makeLogin(email: String, password: String) async throws {
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: password)
+            UserSessionManager.shared.userSession = result.user
+        } catch {
+            throw error
+        }
+    }
     
     func registerUser(email: String, password: String, username: String) async throws {
         do {

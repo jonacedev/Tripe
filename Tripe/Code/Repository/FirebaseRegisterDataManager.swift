@@ -13,11 +13,11 @@ class FirebaseRegisterDataManager {
     
     // MARK: - Properties
     
-    private var apiClient: FirebaseRegisterAPIClientProtocol
+    private var apiClient: FirebaseAuthAPIClientProtocol
     
     // MARK: - Object lifecycle
     
-    init(apiClient: FirebaseRegisterAPIClientProtocol) {
+    init(apiClient: FirebaseAuthAPIClientProtocol) {
         self.apiClient = apiClient
     }
 }

@@ -20,7 +20,7 @@ class LoginAssembly {
 
 extension LoginAssembly {
     func createFirebaseLoginUseCase() -> FirebaseLoginUseCaseProtocol {
-        let apiClient: FirebaseLoginAPIClientProtocol = FirebaseLoginAPIClient()
+        let apiClient: FirebaseAuthAPIClientProtocol = FirebaseAuthAPIClient()
         let dataManager: FirebaseLoginDataManagerProtocol = FirebaseLoginDataManager(apiClient: apiClient)
         
         return FirebaseLoginUseCase(dataManager: dataManager)

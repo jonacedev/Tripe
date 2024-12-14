@@ -13,11 +13,11 @@ class FirebaseLoginDataManager {
     
     // MARK: - Properties
     
-    private var apiClient: FirebaseLoginAPIClientProtocol
+    private var apiClient: FirebaseAuthAPIClientProtocol
     
     // MARK: - Object lifecycle
     
-    init(apiClient: FirebaseLoginAPIClientProtocol) {
+    init(apiClient: FirebaseAuthAPIClientProtocol) {
         self.apiClient = apiClient
     }
 }
