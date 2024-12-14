@@ -6,12 +6,9 @@
 //
 
 import SwiftUI
-import Combine
-import FirebaseAuth
 
 struct ContentView: View {
     @StateObject var mainAppCoordinator = MainAppCoordinator()
-    @State private var cancellable: AnyCancellable?
     @State private var splashLoaded: Bool = false
     
     var body: some View {
@@ -33,44 +30,12 @@ struct ContentView: View {
             errorAlert()
             loader()
         }
-        .onAppear {
-            listenSessionChanges()
+        .onReceive(UserSessionManager.shared.sessionPublisher) { userSession in
+            mainAppCoordinator.currentRoot = userSession != nil ? .tabBar : .login
         }
         .onChange(of: splashLoaded) {
-            checkUserSession()
+            UserSessionManager.shared.checkUserSession()
         }
-    }
-    
-    private func listenSessionChanges() {
-        cancellable = UserSessionManager.shared.sessionPublisher
-            .receive(on: RunLoop.main)
-            .sink { userSession in
-                if userSession != nil {
-                    mainAppCoordinator.currentRoot = .tabBar
-                } else {
-                    mainAppCoordinator.currentRoot = .login
-                }
-            }
-    }
-    
-    private func checkUserSession() {
-        if let user = Auth.auth().currentUser {
-            if AppleLoginHelper.shared.isAppleSession() {
-                checkAppleSession(for: user)
-            } else {
-                UserSessionManager.shared.userSession = user
-            }
-        } else {
-            UserSessionManager.shared.userSession = nil
-        }
-    }
-    
-    private func checkAppleSession(for user: FirebaseAuth.User) {
-        AppleLoginHelper.shared.isValidAppleSession(success: {
-            UserSessionManager.shared.userSession = user
-        }, failure: {
-            UserSessionManager.shared.userSession = nil
-        })
     }
 }
 

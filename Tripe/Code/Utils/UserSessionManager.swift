@@ -13,17 +13,40 @@ final class UserSessionManager {
     
     // MARK: - Singleton
     static let shared = UserSessionManager()
+    private init() {}
     
     private var sessionSubject = PassthroughSubject<FirebaseAuth.User?, Never>()
     var sessionPublisher: AnyPublisher<FirebaseAuth.User?, Never> {
-        return sessionSubject.eraseToAnyPublisher()
+        sessionSubject.eraseToAnyPublisher()
     }
     
     var userSession: FirebaseAuth.User? {
         didSet {
-            sessionSubject.send(userSession)
+            DispatchQueue.main.async {
+                self.sessionSubject.send(self.userSession)
+            }
         }
     }
     
-    private init() {}
+    func checkUserSession() {
+        if let user = Auth.auth().currentUser {
+            if AppleLoginHelper.shared.isAppleSession() {
+                checkAppleSession(for: user)
+            } else {
+                UserSessionManager.shared.userSession = user
+            }
+        } else {
+            UserSessionManager.shared.userSession = nil
+        }
+    }
+    
+    private func checkAppleSession(for user: FirebaseAuth.User) {
+        AppleLoginHelper.shared.isValidAppleSession(success: {
+            UserSessionManager.shared.userSession = user
+        }, failure: {
+            UserSessionManager.shared.userSession = nil
+        })
+    }
+    
+   
 }
