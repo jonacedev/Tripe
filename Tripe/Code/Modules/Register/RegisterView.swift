@@ -9,6 +9,11 @@ import SwiftUI
 
 struct RegisterView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
+    
+    
+    // TODO: Extraer método de tocar pantalla para quitar keyboard y aplicar en LoginView
+    @FocusState private var isTextFieldFocused: Bool
+    
     @State var vm: RegisterViewModel
     
     var body: some View {
@@ -19,25 +24,35 @@ struct RegisterView: View {
     }
     
     @ViewBuilder private func content() -> some View {
-        VStack(spacing: 0) {
-            vwHeader()
-                .padding(.bottom, 70)
-            vwInputs()
-                .padding(.bottom, 40)
-            vwAccessButton()
-                .padding(.bottom, 40)
-            TPDivider()
-                .padding(.bottom, 40)
-            vwFooter()
-                .padding(.bottom, 40)
+        ZStack {
+            // Background view to detect taps
+            Color.clear
+                .contentShape(Rectangle()) // Makes the whole area tappable
+                .onTapGesture {
+                    isTextFieldFocused = false
+                }
             
-            Spacer()
+            VStack(spacing: 0) {
+                vwHeader()
+                    .padding(.bottom, 70)
+                vwInputs()
+                    .padding(.bottom, 40)
+                vwAccessButton()
+                    .padding(.bottom, 40)
+                TPDivider()
+                    .padding(.bottom, 40)
+                vwFooter()
+                    .padding(.bottom, 40)
+                
+                Spacer()
+            }
+            .padding(.horizontal, BaseConstants.generalPadding)
+            .padding(.top, 70)
+            .onChange(of: vm.registerSuccess) {
+                mainAppCoordinator.replaceRootWith(.tabBar)
+            }
         }
-        .padding(.horizontal, BaseConstants.generalPadding)
-        .padding(.top, 70)
-        .onChange(of: vm.registerSuccess) {
-            mainAppCoordinator.replaceRootWith(.tabBar)
-        }
+        
     }
     
     @ViewBuilder private func vwHeader() -> some View {
@@ -55,6 +70,7 @@ struct RegisterView: View {
                     placeholder: "username_label_placeholder".localized,
                     text: $vm.username
                 )
+                .focused($isTextFieldFocused)
             }
             
             VStack(alignment: .leading, spacing: 10) {
@@ -65,6 +81,7 @@ struct RegisterView: View {
                     placeholder: "email_label_placeholder".localized,
                     text: $vm.email
                 )
+                .focused($isTextFieldFocused)
             }
             
             VStack(alignment: .leading, spacing: 10) {
@@ -75,6 +92,7 @@ struct RegisterView: View {
                     placeholder: "password_label_placeholder".localized,
                     text: $vm.password
                 )
+                .focused($isTextFieldFocused)
             }
         }
     }
