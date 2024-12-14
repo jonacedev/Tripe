@@ -23,6 +23,7 @@ class BaseViewModel {
     }
     
     func presentError(error: BaseError) {
+        hideLoading()
         showError = true
         errorToShow = error
     }

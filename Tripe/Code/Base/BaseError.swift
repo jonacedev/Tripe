@@ -16,7 +16,7 @@ enum BaseError: Error {
         
         switch self {
         case .generic: description = "error_generic".localized
-        case .apiError(let apiError, let statusCode): description = apiError?.description ?? ""
+        case .apiError(let apiError, let statusCode): description = apiError?.messageKey ?? ""
         }
         
         return description

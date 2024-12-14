@@ -15,23 +15,26 @@ struct BaseErrorAlert: View {
         VStack {
             VStack(spacing: 30) {
                 Text(error.description())
+                    .font(.semiBoldTextSizeMOpenSans)
+                    .multilineTextAlignment(.center)
                 
                 Button(action: {
                     onAccept()
                 }, label: {
                     Text("button_ok".localized)
+                        .font(.boldTextSizeMOpenSans)
                 })
             }
-            .padding()
+            .padding(20)
             .foregroundColor(.white)
             .background(Color.primaryApp)
-            .cornerRadius(10)
+            .cornerRadius(BaseConstants.cornerRadiusDefault)
             .shadow(radius: 5)
             
-                
         }
+        .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black.opacity(0.4))
+        .background(Color.black.opacity(0.5))
         .ignoresSafeArea()
     }
 }

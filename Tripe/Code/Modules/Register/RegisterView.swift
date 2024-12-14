@@ -23,10 +23,10 @@ struct RegisterView: View {
             vwHeader()
                 .padding(.bottom, 70)
             vwInputs()
-                .padding(.bottom, 30)
+                .padding(.bottom, 40)
             vwAccessButton()
                 .padding(.bottom, 40)
-            Divider()
+            TPDivider()
                 .padding(.bottom, 40)
             vwFooter()
                 .padding(.bottom, 40)
@@ -35,6 +35,9 @@ struct RegisterView: View {
         }
         .padding(.horizontal, BaseConstants.generalPadding)
         .padding(.top, 70)
+        .onChange(of: vm.registerSuccess) {
+            mainAppCoordinator.replaceRootWith(.tabBar)
+        }
     }
     
     @ViewBuilder private func vwHeader() -> some View {
@@ -50,7 +53,7 @@ struct RegisterView: View {
                 
                 TPTextField(
                     placeholder: "username_label_placeholder".localized,
-                    text: $vm.email
+                    text: $vm.username
                 )
             }
             
@@ -68,9 +71,9 @@ struct RegisterView: View {
                 Text("password_label".localized)
                     .font(.semiBoldTextSizeMOpenSans)
                 
-                TPTextField(
+                TPSecureTextField(
                     placeholder: "password_label_placeholder".localized,
-                    text: $vm.email
+                    text: $vm.password
                 )
             }
         }
@@ -79,8 +82,7 @@ struct RegisterView: View {
     @ViewBuilder private func vwAccessButton() -> some View {
         VStack(spacing: 35) {
             TPMainButton(title: "continue_label".localized) {
-                // TODO: WHEN REGISTER FINISHED REPLACE THIS WITH MAKE LOGIN FUNCTION
-                mainAppCoordinator.replaceRootWith(.tabBar)
+                registerUser()
             }
         }
     }
@@ -99,6 +101,14 @@ struct RegisterView: View {
                     .font(.boldTextSizeMOpenSans)
                     .underline()
             })
+        }
+    }
+}
+
+extension RegisterView {
+    private func registerUser() {
+        Task {
+            await vm.registerUser()
         }
     }
 }

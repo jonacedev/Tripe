@@ -9,15 +9,21 @@
 import SwiftUI
 
 class RegisterAssembly {
-
+    
     // MARK: - Private Functions
-
+    
     func build() -> RegisterView {
-        let viewModel: RegisterViewModel = RegisterViewModel()
+        let firebaseRegisterUseCase = createFirebaseRegisterUseCase()
+        let viewModel: RegisterViewModel = RegisterViewModel(firebaseRegisterUseCase: firebaseRegisterUseCase)
         return RegisterView(vm: viewModel)
     }
 }
 
 extension RegisterAssembly {
-   
+    func createFirebaseRegisterUseCase() -> FirebaseRegisterUseCaseProtocol {
+        let apiClient: FirebaseRegisterAPIClientProtocol = FirebaseRegisterAPIClient()
+        let dataManager: FirebaseRegisterDataManagerProtocol = FirebaseRegisterDataManager(apiClient: apiClient)
+        
+        return FirebaseRegisterUseCase(dataManager: dataManager)
+    }
 }

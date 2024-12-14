@@ -20,9 +20,9 @@ class FirebaseRegisterAPIClient: FirebaseRegisterAPIClientProtocol {
     func registerUser(email: String, password: String, username: String) async throws {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-            let user = UserModel(id: result.user.uid, username: username, email: email)
+            UserSessionManager.shared.userSession = result.user
             
-            // Save the user on firebase
+            let user = UserModel(id: result.user.uid, username: username, email: email)
             try await uploadUserData(user: user)
         } catch {
             print("Register error: \(error.localizedDescription)")

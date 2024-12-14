@@ -13,6 +13,7 @@ class LoginViewModel: BaseViewModel {
     private var firebaseLoginUseCase: FirebaseLoginUseCaseProtocol
     var email: String = ""
     var password: String = ""
+    var loginSuccess: Bool = false
     
     // MARK: - Object lifecycle
     
@@ -25,6 +26,7 @@ class LoginViewModel: BaseViewModel {
         showLoading()
         do {
             try await firebaseLoginUseCase.makeLogin(email: email, password: password)
+            loginSuccess = true
             hideLoading()
         } catch {
             presentError(error: .apiError(ErrorResponse(messageKey: error.localizedDescription), nil))

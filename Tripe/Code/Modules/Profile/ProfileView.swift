@@ -23,8 +23,19 @@ struct ProfileView: View {
             Text("Profile View")
             
             Button("closeSession".localized, action: {
-                mainAppCoordinator.replaceRootWith(.login)
+                closeSession()
             })
+        }
+        .onChange(of: vm.closeSession) {
+            mainAppCoordinator.replaceRootWith(.login)
+        }
+    }
+}
+
+extension ProfileView {
+    private func closeSession() {
+        Task {
+            await vm.closeSession()
         }
     }
 }

@@ -279,12 +279,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Register at"
+            "value" : "Register"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Regístrate"
           }
         }

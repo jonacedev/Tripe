@@ -33,6 +33,9 @@ struct LoginView: View {
         }
         .padding(.horizontal, BaseConstants.generalPadding)
         .padding(.top, 70)
+        .onChange(of: vm.loginSuccess) {
+            mainAppCoordinator.replaceRootWith(.tabBar)
+        }
     }
     
     @ViewBuilder private func vwHeader() -> some View {
@@ -67,8 +70,7 @@ struct LoginView: View {
     @ViewBuilder private func vwAccessButtons() -> some View {
         VStack(spacing: 35) {
             TPMainButton(title: "login_accept".localized) {
-                // TODO: WHEN REGISTER FINISHED REPLACE THIS WITH MAKE LOGIN FUNCTION
-                mainAppCoordinator.replaceRootWith(.tabBar)
+                makeLogin()
             }
            
             HStack(alignment: .center) {
@@ -107,7 +109,6 @@ extension LoginView {
     private func makeLogin() {
         Task {
             await vm.makeLogin()
-            mainAppCoordinator.replaceRootWith(.tabBar)
         }
     }
 }

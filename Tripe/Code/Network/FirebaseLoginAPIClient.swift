@@ -20,13 +20,8 @@ class FirebaseLoginAPIClient: FirebaseLoginAPIClientProtocol {
     func makeLogin(email: String, password: String) async throws {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            let userModel = UserModel(id: result.user.uid, username: result.user.displayName ?? "", email: result.user.email ?? "")
-            
-            // Save the user data locally
-            let encodedSession = try Firestore.Encoder().encode(userModel)
-            UserDefaults.standard.set(encodedSession, forKey: "userSession")
+            UserSessionManager.shared.userSession = result.user
         } catch {
-            print("Login error: \(error.localizedDescription)")
             throw error
         }
     }

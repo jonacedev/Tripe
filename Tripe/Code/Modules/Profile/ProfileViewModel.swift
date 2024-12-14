@@ -6,8 +6,22 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 @Observable
 class ProfileViewModel: BaseViewModel {
     
+    var closeSession = false
+    
+    @MainActor
+    func closeSession() async {
+        showLoading()
+        do {
+            try Auth.auth().signOut()
+            closeSession = true
+            hideLoading()
+        } catch {
+            presentError(error: .apiError(ErrorResponse(messageKey: error.localizedDescription), nil))
+        }
+    }
 }

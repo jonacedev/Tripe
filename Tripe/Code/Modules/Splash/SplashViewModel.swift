@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 @Observable
 class SplashViewModel: BaseViewModel {
@@ -31,12 +32,21 @@ class SplashViewModel: BaseViewModel {
             self.forceUpdateAlert = true
         })
     }
-        
+    
     private func checkJailbreak() {
         if !DeviceInfo.isJailbreak() {
             successCheck = true
         } else {
             showJailbreakAlert = true
         }
+    }
+    
+    
+    func isUserSessionOpened() -> Bool {
+        if let user = Auth.auth().currentUser {
+            UserSessionManager.shared.userSession = user
+            return true
+        }
+        return false
     }
 }
