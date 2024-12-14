@@ -32,13 +32,24 @@ struct LoginView: View {
             
         }
         .padding(.horizontal, BaseConstants.generalPadding)
-        .padding(.top, 70)
+        .padding(.top, 0)
         .onChange(of: vm.loginSuccess) {
             mainAppCoordinator.replaceRootWith(.tabBar)
         }
     }
     
     @ViewBuilder private func vwHeader() -> some View {
+        HStack{
+            Spacer()
+            
+            Button {
+                print("Ir a menú incial")
+            } label: {
+                Image(systemName: "line.3.horizontal")
+                    .foregroundStyle(Color.primaryApp)
+            }
+        }
+        
         Text("welcome_title".localized)
             .font(.semiBoldTextLargeTitleOpenSans)
     }
