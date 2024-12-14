@@ -14,6 +14,7 @@ struct ErrorHandlerModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onChange(of: vm.showError) {
+                mainAppCoordinator.hideLoading()
                 if let error = vm.errorToShow {
                     mainAppCoordinator.presentError(error: error)
                     vm.resetError()

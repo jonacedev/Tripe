@@ -11,6 +11,7 @@ struct SplashView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
     @State var vm: SplashViewModel
     @State var animateLogo = false
+    @Binding var splashLoaded: Bool
     
     var body: some View {
         ZStack {
@@ -30,7 +31,7 @@ struct SplashView: View {
         }
         .onChange(of: vm.successCheck) {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                navigateToNextScreen()
+                splashLoaded = true
             }
         }
         .alert(isPresented: $vm.showJailbreakAlert) {
@@ -53,17 +54,7 @@ struct SplashView: View {
     }
 }
 
-extension SplashView {
-    func navigateToNextScreen() {
-        if vm.isUserSessionOpened() {
-            mainAppCoordinator.replaceRootWith(.tabBar)
-        } else {
-            mainAppCoordinator.replaceRootWith(.login)
-        }
-    }
-}
-
 #Preview {
-    SplashAssembly().build()
+    SplashAssembly().build(splashLoaded: .constant(false))
         .environmentObject(MainAppCoordinator())
 }

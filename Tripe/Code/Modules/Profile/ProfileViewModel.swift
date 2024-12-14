@@ -15,11 +15,9 @@ class ProfileViewModel: BaseViewModel {
     
     @MainActor
     func closeSession() async {
-        showLoading()
         do {
             try Auth.auth().signOut()
-            closeSession = true
-            hideLoading()
+            UserSessionManager.shared.userSession = nil
         } catch {
             presentError(error: .apiError(ErrorResponse(messageKey: error.localizedDescription), nil))
         }

@@ -17,6 +17,5 @@ struct BaseView<Content: View>: View {
             content()
         }
         .handleErrors(vm: vm)
-        .handleLoader(vm: vm)
     }
 }

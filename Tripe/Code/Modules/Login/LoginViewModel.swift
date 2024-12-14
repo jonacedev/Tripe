@@ -11,25 +11,29 @@ import Foundation
 class LoginViewModel: BaseViewModel {
     
     private var firebaseLoginUseCase: FirebaseLoginUseCaseProtocol
+    private var firebaseAppleLoginUseCase: FirebaseAppleLoginUseCaseProtocol
+    
     var email: String = ""
     var password: String = ""
-    var loginSuccess: Bool = false
     
     // MARK: - Object lifecycle
     
-    init(firebaseLoginUseCase: FirebaseLoginUseCaseProtocol) {
+    init(firebaseLoginUseCase: FirebaseLoginUseCaseProtocol, firebaseAppleLoginUseCase: FirebaseAppleLoginUseCaseProtocol) {
         self.firebaseLoginUseCase = firebaseLoginUseCase
+        self.firebaseAppleLoginUseCase = firebaseAppleLoginUseCase
     }
     
     @MainActor
     func makeLogin() async {
-        showLoading()
         do {
             try await firebaseLoginUseCase.makeLogin(email: email, password: password)
-            loginSuccess = true
-            hideLoading()
         } catch {
             presentError(error: .apiError(ErrorResponse(messageKey: error.localizedDescription), nil))
         }
+    }
+    
+    @MainActor
+    func makeLoginWithApple() {
+        firebaseAppleLoginUseCase.makeLoginWithApple()
     }
 }

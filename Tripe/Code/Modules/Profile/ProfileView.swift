@@ -26,16 +26,15 @@ struct ProfileView: View {
                 closeSession()
             })
         }
-        .onChange(of: vm.closeSession) {
-            mainAppCoordinator.replaceRootWith(.login)
-        }
     }
 }
 
 extension ProfileView {
     private func closeSession() {
         Task {
+            mainAppCoordinator.showLoading()
             await vm.closeSession()
+            mainAppCoordinator.hideLoading()
         }
     }
 }

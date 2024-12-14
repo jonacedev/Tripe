@@ -33,9 +33,6 @@ struct LoginView: View {
         }
         .padding(.horizontal, BaseConstants.generalPadding)
         .padding(.top, 70)
-        .onChange(of: vm.loginSuccess) {
-            mainAppCoordinator.replaceRootWith(.tabBar)
-        }
     }
     
     @ViewBuilder private func vwHeader() -> some View {
@@ -82,7 +79,7 @@ struct LoginView: View {
             }
             
             TPAppleCustomButton {
-                print("")
+                vm.makeLoginWithApple()
             }
         }
     }
@@ -108,7 +105,9 @@ struct LoginView: View {
 extension LoginView {
     private func makeLogin() {
         Task {
+            mainAppCoordinator.showLoading()
             await vm.makeLogin()
+            mainAppCoordinator.hideLoading()
         }
     }
 }
