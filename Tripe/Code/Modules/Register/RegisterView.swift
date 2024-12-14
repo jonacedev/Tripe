@@ -35,6 +35,7 @@ struct RegisterView: View {
         }
         .padding(.horizontal, BaseConstants.generalPadding)
         .padding(.top, 70)
+        .ignoresSafeArea(.keyboard)
     }
     
     @ViewBuilder private func vwHeader() -> some View {
