@@ -70,7 +70,7 @@ struct LoginView: View {
             TPMainButton(title: "login_accept".localized) {
                 makeLogin()
             }
-           
+            
             HStack(alignment: .center) {
                 TPDivider()
                 Text("other_label_title".localized)
