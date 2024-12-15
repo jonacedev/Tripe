@@ -30,3 +30,9 @@ struct TripeApp: App {
         }
     }
 }
+
+@Observable
+class LanguageSetting {
+    // initialise this from UserDefaults if you like
+    var locale = Locale(identifier: "en")
+}

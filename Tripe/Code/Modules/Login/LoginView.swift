@@ -9,31 +9,41 @@ import SwiftUI
 
 struct LoginView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
-    @State var vm: LoginViewModel
+      @StateObject private var initialMenuCoordinator = InitialMenuCoordinator()
+      @State var vm: LoginViewModel
     
     var body: some View {
-        BaseView(
-            content: content,
-            vm: vm
-        )
-    }
+          NavigationStack(path: $initialMenuCoordinator.path) {
+              BaseView(
+                  content: content,
+                  vm: vm
+              )
+              .navigationDestination(for: Screen.self) {
+                  $0.makeView()
+              }
+          }
+      }
+
     
     @ViewBuilder private func content() -> some View {
-        VStack(spacing: 0) {
-            vwHeader()
-                .padding(.bottom, 70)
-            vwInputs()
-                .padding(.bottom, 40)
-            vwAccessButtons()
-                .padding(.bottom, 50)
-            vwFooter()
-            
-            Spacer()
-            
-        }
+        
+            VStack(spacing: 0) {
+                vwHeader()
+                    .padding(.bottom, 70)
+                vwInputs()
+                    .padding(.bottom, 40)
+                vwAccessButtons()
+                    .padding(.bottom, 50)
+                vwFooter()
+                
+                Spacer()
+                
+            }
+        
+        
         .padding(.horizontal, BaseConstants.generalPadding)
-        .padding(.top, 70)
         .ignoresSafeArea(.keyboard)
+        
     }
     
     @ViewBuilder private func vwHeader() -> some View {
@@ -41,7 +51,7 @@ struct LoginView: View {
             Spacer()
             
             Button {
-                print("Ir a menú incial")
+                initialMenuCoordinator.push(.initialMenu)
             } label: {
                 Image(systemName: "line.3.horizontal")
                     .foregroundStyle(Color.primaryApp)
@@ -53,7 +63,7 @@ struct LoginView: View {
     }
     
     @ViewBuilder private func vwInputs() -> some View {
-        VStack(spacing: 35) {
+        VStack(spacing: 40) {
             VStack(alignment: .leading, spacing: 10) {
                 Text("email_label".localized)
                     .font(.semiBoldTextSizeMOpenSans)
@@ -127,4 +137,5 @@ extension LoginView {
 #Preview {
     LoginAssembly().build()
         .environmentObject(MainAppCoordinator())
+        .environmentObject(InitialMenuCoordinator())
 }

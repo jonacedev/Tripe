@@ -13,7 +13,7 @@ class InitialMenuAssembly {
 
     func build() -> InitialMenuView {
         let viewModel: InitialMenuViewModel = InitialMenuViewModel()
-        return InitialMenuView(vm: viewModel)
+        return InitialMenuView(initialMenuCoordinator: InitialMenuCoordinator(), vm: viewModel)
     }
 }
 

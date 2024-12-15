@@ -64,4 +64,17 @@ public class DeviceInfo {
     public static func isRunningInPreview() -> Bool {
         ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != nil
     }
+    
+    public static func isOperatingSystem() -> String {
+          let systemName = UIDevice.current.systemName
+          
+          switch systemName {
+          case "iOS":
+              return "iOS"
+          case "macOS":
+              return "macOS"
+          default:
+              return systemName
+          }
+      }
 }
