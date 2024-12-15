@@ -20,7 +20,7 @@ extension Font.TextStyle {
         case .largeTitle: return 28
         case .title: return 24
         case .title2: return 20
-        case .title3: return 16
+        case .title3: return 18
         case .body: return 16
         case .headline: return 14
         case .subheadline, .callout: return 12
@@ -49,14 +49,14 @@ extension Font {
     /// OpenSans SemiBold, size: 16pt (M - Body)
     static var semiBoldTextSizeMOpenSans = customOpenSans(.semiBold, relativeTo: .body)
     
-    /// OpenSans SemiBold, size: 24pt (H1 - Title)
-    static var semiBoldTextSizeH1OpenSans = customOpenSans(.semiBold, relativeTo: .title)
+    /// OpenSans SemiBold, size: 18pt (H3 - Title3)
+    static var semiBoldTextSizeH3OpenSans = customOpenSans(.semiBold, relativeTo: .title3)
     
     /// OpenSans SemiBold, size: 20pt (H2 - Title2)
     static var semiBoldTextSizeH2OpenSans = customOpenSans(.semiBold, relativeTo: .title2)
     
-    /// OpenSans SemiBold, size: 16pt (H3 - Title3)
-    static var semiBoldTextSizeH3OpenSans = customOpenSans(.semiBold, relativeTo: .title3)
+    /// OpenSans SemiBold, size: 24pt (H1 - Title)
+    static var semiBoldTextSizeH1OpenSans = customOpenSans(.semiBold, relativeTo: .title)
     
     /// OpenSans SemiBold, size: 28pt (Large Title)
     static var semiBoldTextLargeTitleOpenSans = customOpenSans(.semiBold, relativeTo: .largeTitle)
@@ -73,14 +73,14 @@ extension Font {
     /// OpenSans Bold, size: 16pt (M - Body)
     static var boldTextSizeMOpenSans = customOpenSans(.bold, relativeTo: .body)
     
-    /// OpenSans Bold, size: 24pt (H1 - Title)
-    static var boldTextSizeH1OpenSans = customOpenSans(.bold, relativeTo: .title)
+    /// OpenSans Bold, size: 18pt (H3 - Title3)
+    static var boldTextSizeH3OpenSans = customOpenSans(.bold, relativeTo: .title3)
     
     /// OpenSans Bold, size: 20pt (H2 - Title2)
     static var boldTextSizeH2OpenSans = customOpenSans(.bold, relativeTo: .title2)
     
-    /// OpenSans Bold, size: 16pt (H3 - Title3)
-    static var boldTextSizeH3OpenSans = customOpenSans(.bold, relativeTo: .title3)
+    /// OpenSans Bold, size: 24pt (H1 - Title)
+    static var boldTextSizeH1OpenSans = customOpenSans(.bold, relativeTo: .title)
     
     /// OpenSans Bold, size: 28pt (Large Title)
     static var boldTextLargeTitleOpenSans = customOpenSans(.bold, relativeTo: .largeTitle)
@@ -97,14 +97,14 @@ extension Font {
     /// OpenSans Regular, size: 16pt (M - Body)
     static var regularTextSizeMOpenSans = customOpenSans(.regular, relativeTo: .body)
     
-    /// OpenSans Regular, size: 24pt (H1 - Title)
-    static var regularTextSizeH1OpenSans = customOpenSans(.regular, relativeTo: .title)
+    /// OpenSans Regular, size: 18pt (H3 - Title3)
+    static var regularTextSizeH3OpenSans = customOpenSans(.regular, relativeTo: .title3)
     
     /// OpenSans Regular, size: 20pt (H2 - Title2)
     static var regularTextSizeH2OpenSans = customOpenSans(.regular, relativeTo: .title2)
     
-    /// OpenSans Regular, size: 16pt (H3 - Title3)
-    static var regularTextSizeH3OpenSans = customOpenSans(.regular, relativeTo: .title3)
+    /// OpenSans Regular, size: 24pt (H1 - Title)
+    static var regularTextSizeH1OpenSans = customOpenSans(.regular, relativeTo: .title)
     
     /// OpenSans Regular, size: 28pt (Large Title)
     static var regularTextLargeTitleOpenSans = customOpenSans(.regular, relativeTo: .largeTitle)

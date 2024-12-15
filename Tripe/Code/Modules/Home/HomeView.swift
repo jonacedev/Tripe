@@ -21,19 +21,30 @@ struct HomeView: View {
     
     @ViewBuilder private func content() -> some View {
         VStack(spacing: 20) {
-            Text("Home View")
-                .font(.regularTextSizeMOpenSans)
-            
-            Button("Navigate to profile") {
-                homeCoordinator.push(.profile)
-            }
+            vwHeader()
+                .padding(.top, 10)
         }
         .padding(.horizontal, BaseConstants.generalPadding)
+    }
+    
+    @ViewBuilder private func vwHeader() -> some View {
+        HStack(alignment: .center) {
+            VStack(alignment: .leading) {
+                Text("greeting_title".localized)
+                    .font(.regularTextSizeH3OpenSans)
+                Text("Roberto")
+                    .font(.semiBoldTextSizeH3OpenSans)
+            }
+            Spacer()
+            Image("profile_user_mock")
+                .resizable()
+                .scaledToFill()
+                .clipShape(.circle)
+                .frame(width: 55, height: 55)
+        }
     }
 }
 
 #Preview {
     HomeAssembly().build()
-        .environmentObject(MainAppCoordinator())
-        .environmentObject(HomeCoordinator())
 }

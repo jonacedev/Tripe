@@ -137,6 +137,23 @@
         }
       }
     },
+    "greeting_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello, Welcome 👋🏼"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hola, Bienvenid@ 👋🏼"
+          }
+        }
+      }
+    },
     "jailbreak_description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -284,7 +301,7 @@
         },
         "es" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Regístrate"
           }
         }
@@ -347,13 +364,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welcome"
+            "value" : "Tripe"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenido"
+            "value" : "Tripe"
           }
         }
       }
