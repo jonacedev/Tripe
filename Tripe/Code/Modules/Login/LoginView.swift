@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
+      @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
       @StateObject private var initialMenuCoordinator = InitialMenuCoordinator()
       @State var vm: LoginViewModel
     

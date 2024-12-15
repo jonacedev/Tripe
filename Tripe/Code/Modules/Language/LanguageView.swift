@@ -1,16 +1,7 @@
-//
-//  LanguageView.swift
-//  Tripe
-//
-//  Created by Mei De Blas on 14/12/24.
-//
-
 import SwiftUI
 
 struct LanguageView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
-    @StateObject private var initialMenuCoordinator = InitialMenuCoordinator()
-
     @State var vm: LanguageViewModel
     @Environment(\.dismiss) var dismiss
 
@@ -23,15 +14,17 @@ struct LanguageView: View {
             $0.makeView()
         }
     }
-    
+
     @ViewBuilder private func content() -> some View {
         navBar()
             .padding(.bottom, 20)
-        vwOptions()
         vwHeader()
+            .padding(.bottom, 20)
+        vwOptions()
         Spacer()
+        vwConfirm()
     }
-    
+
     @ViewBuilder private func navBar() -> some View {
         SimpleNavBar(
             title: "language_title".localized,
@@ -41,10 +34,10 @@ struct LanguageView: View {
             }
         )
     }
-    
+
     @ViewBuilder private func vwHeader() -> some View {
-        HStack() {
-            VStack(alignment: .leading){
+        HStack {
+            VStack(alignment: .leading) {
                 Text("subtitle_language".localized)
                     .font(.semiBoldTextSizeMOpenSans)
                     .padding(.bottom, 20)
@@ -57,20 +50,29 @@ struct LanguageView: View {
         .padding()
         .foregroundStyle(Color.primaryApp)
     }
-    
+
     @ViewBuilder private func vwOptions() -> some View {
-
-
+        RadioButtonGroup(
+            options: vm.languages,
+            selectedOption: vm.selectedLanguage,
+            onSelectionChange: { newSelection in
+                vm.selectedLanguage = newSelection
+            },
+            displayOption: { $0.name }
+        )
     }
-}
 
-
-
-extension LanguageView {
-  
+    @ViewBuilder private func vwConfirm() -> some View {
+        TPMainButton(title: "button_ok".localized) {
+            vm.changeAppLanguage(to: vm.selectedLanguage)
+            //TODO: Pop view
+        }
+        .padding(20)
+    }
 }
 
 #Preview {
     LanguageAssembly().build()
         .environmentObject(MainAppCoordinator())
+        .environmentObject(InitialMenuCoordinator())
 }
