@@ -9,5 +9,5 @@ import Foundation
 
 @Observable
 class HomeViewModel: BaseViewModel {
-    
+    var searchText: String = ""
 }

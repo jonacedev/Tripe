@@ -20,11 +20,19 @@ struct HomeView: View {
     }
     
     @ViewBuilder private func content() -> some View {
-        VStack(spacing: 20) {
-            vwHeader()
-                .padding(.top, 10)
+        ZStack {
+            Color(uiColor: .systemGray6).opacity(0.7)
+                .ignoresSafeArea()
+            
+            VStack(spacing: 20) {
+                vwHeader()
+                    .padding(.top, 20)
+                TPSearchBar(text: $vm.searchText, placeholder: "searchbar_placeholder".localized)
+                
+                Spacer()
+            }
+            .padding(.horizontal, BaseConstants.generalPadding)
         }
-        .padding(.horizontal, BaseConstants.generalPadding)
     }
     
     @ViewBuilder private func vwHeader() -> some View {
