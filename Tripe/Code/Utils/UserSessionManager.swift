@@ -47,6 +47,4 @@ final class UserSessionManager {
             UserSessionManager.shared.userSession = nil
         })
     }
-    
-   
 }
