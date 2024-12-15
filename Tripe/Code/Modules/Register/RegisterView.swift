@@ -10,6 +10,7 @@ import SwiftUI
 struct RegisterView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
     @State var vm: RegisterViewModel
+    @State private var normalInfoLabel: TPTextfieldInfoLabelType = .none
     
     var body: some View {
         BaseView(
@@ -45,35 +46,11 @@ struct RegisterView: View {
     
     @ViewBuilder private func vwInputs() -> some View {
         VStack(spacing: 35) {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("username_label".localized)
-                    .font(.semiBoldTextSizeMOpenSans)
-                
-                TPTextField(
-                    placeholder: "username_label_placeholder".localized,
-                    text: $vm.username
-                )
-            }
+            TPTextField(textfieldType: .normal, text: $vm.email, placeholder: "username_label_placeholder".localized, titleLabel: "username_label".localized)
             
-            VStack(alignment: .leading, spacing: 10) {
-                Text("email_label".localized)
-                    .font(.semiBoldTextSizeMOpenSans)
-                
-                TPTextField(
-                    placeholder: "email_label_placeholder".localized,
-                    text: $vm.email
-                )
-            }
+            TPTextField(textfieldType: .normal, text: $vm.email, placeholder: "email_label_placeholder".localized, titleLabel: "email_label".localized)
             
-            VStack(alignment: .leading, spacing: 10) {
-                Text("password_label".localized)
-                    .font(.semiBoldTextSizeMOpenSans)
-                
-                TPSecureTextField(
-                    placeholder: "password_label_placeholder".localized,
-                    text: $vm.password
-                )
-            }
+            TPTextField(textfieldType: .secure, text: $vm.password, placeholder: "password_label_placeholder".localized, titleLabel: "password_label".localized)
         }
     }
     

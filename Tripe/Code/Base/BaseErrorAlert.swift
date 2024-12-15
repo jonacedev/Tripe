@@ -23,6 +23,7 @@ struct BaseErrorAlert: View {
                 }, label: {
                     Text("button_ok".localized)
                         .font(.boldTextSizeMOpenSans)
+                        .frame(maxWidth: .infinity)
                 })
             }
             .padding(20)

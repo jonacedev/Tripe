@@ -122,7 +122,7 @@
 				};
 			};
 			buildConfigurationList = AB3DAA472D08C85A007C6383 /* Build configuration list for PBXProject "Tripe" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,

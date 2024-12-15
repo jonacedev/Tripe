@@ -43,25 +43,9 @@ struct LoginView: View {
     
     @ViewBuilder private func vwInputs() -> some View {
         VStack(spacing: 35) {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("email_label".localized)
-                    .font(.semiBoldTextSizeMOpenSans)
-                
-                TPTextField(
-                    placeholder: "email_label_placeholder".localized,
-                    text: $vm.email
-                )
-            }
+            TPTextField(textfieldType: .normal, text: $vm.email, placeholder: "email_label_placeholder".localized, titleLabel: "email_label".localized)
             
-            VStack(alignment: .leading, spacing: 10) {
-                Text("password_label".localized)
-                    .font(.semiBoldTextSizeMOpenSans)
-                
-                TPSecureTextField(
-                    placeholder: "password_label_placeholder".localized,
-                    text: $vm.password
-                )
-            }
+            TPTextField(textfieldType: .secure, text: $vm.password, placeholder: "password_label_placeholder".localized, titleLabel: "password_label".localized)
         }
     }
     
