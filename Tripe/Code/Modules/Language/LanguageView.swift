@@ -56,17 +56,18 @@ struct LanguageView: View {
             options: vm.languages,
             selectedOption: vm.selectedLanguage,
             onSelectionChange: { newSelection in
-                vm.selectedLanguage = newSelection
+                vm.setSelectedLanguage(newSelection)
+                vm.setIfIsDifferentLanguage()
             },
             displayOption: { $0.name }
         )
     }
 
     @ViewBuilder private func vwConfirm() -> some View {
-        TPMainButton(title: "button_ok".localized) {
+        TPMainButton(title: "button_ok".localized, action: {
             vm.changeAppLanguage(to: vm.selectedLanguage)
-            //TODO: Pop view
-        }
+            vm.setIfIsDifferentLanguage()
+        }, isDisabled: !vm.isDifferentLanguage)
         .padding(20)
     }
 }

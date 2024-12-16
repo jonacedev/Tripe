@@ -10,10 +10,19 @@ import SwiftUI
 struct TPMainButton: View {
     let title: String
     let action: () -> Void
+    let isDisabled: Bool
+    
+    init(title: String, action: @escaping () -> Void, isDisabled: Bool = false) {
+        self.title = title
+        self.action = action
+        self.isDisabled = isDisabled
+    }
     
     var body: some View {
         Button(action: {
-            action()
+            if !isDisabled {
+                action()
+            }
         }, label: {
             HStack {
                 Text(title)
@@ -21,13 +30,15 @@ struct TPMainButton: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: BaseConstants.buttonDefaultHeight)
-            .foregroundStyle(Color.white)
-            .background(Color.primaryApp)
+            .foregroundStyle(isDisabled ? Color.gray : Color.white)
+            .background(isDisabled ? Color.gray.opacity(0.6) : Color.primaryApp)
             .clipShape(.rect(cornerRadius: BaseConstants.cornerRadiusDefault))
+            .opacity(isDisabled ? 0.6 : 1)
         })
+        .disabled(isDisabled)
     }
 }
 
 #Preview {
-    TPMainButton(title: "Title") { }
+    TPMainButton(title: "Title", action: { })
 }

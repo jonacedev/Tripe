@@ -24,7 +24,6 @@ struct LoginView: View {
           }
       }
 
-    
     @ViewBuilder private func content() -> some View {
         
             VStack(spacing: 0) {
@@ -37,7 +36,6 @@ struct LoginView: View {
                 vwFooter()
                 
                 Spacer()
-                
             }
         
         
