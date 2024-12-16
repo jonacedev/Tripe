@@ -9,16 +9,15 @@ import SwiftUI
 
 struct InitialMenuView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
-     @ObservedObject var initialMenuCoordinator: InitialMenuCoordinator
-     @State var vm: InitialMenuViewModel
-     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject private var profileCoordinator : ProfileCoordinator
+    @State var vm: InitialMenuViewModel
+    
     
     var body: some View {
-            BaseView(
-                content: content,
-                vm: vm
-            )
-           
+        BaseView(
+            content: content,
+            vm: vm
+        )
     }
     
     @ViewBuilder private func content() -> some View {
@@ -31,7 +30,7 @@ struct InitialMenuView: View {
             title: "menu_title".localized,
             showBackButton: true,
             onBackButtonTap: {
-                dismiss()
+                profileCoordinator.popToLast()
             }
         )
     }
@@ -44,7 +43,8 @@ struct InitialMenuView: View {
                         icon: section.icon,
                         title: section.title
                     ) {
-                        //Print navigate to section
+                        profileCoordinator.push(section.screen)
+                        
                     }
                 }
                 .listRowSeparator(.hidden)
@@ -55,8 +55,6 @@ struct InitialMenuView: View {
         .padding(.horizontal, 10)
         .navigationBarHidden(true)
     }
-
-
 }
 
 extension InitialMenuView {
@@ -66,4 +64,5 @@ extension InitialMenuView {
 #Preview {
     InitialMenuAssembly().build()
         .environmentObject(MainAppCoordinator())
+        .environmentObject(ProfileCoordinator())
 }

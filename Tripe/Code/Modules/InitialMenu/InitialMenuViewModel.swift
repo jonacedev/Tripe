@@ -31,5 +31,14 @@ class InitialMenuViewModel: BaseViewModel {
                 return "info.circle"
             }
         }
+        
+        var screen: Screen {
+            switch self {
+            case .language:
+                return .language
+            case .aboutApp:
+                return .aboutApp
+            }
+        }
     }
 }

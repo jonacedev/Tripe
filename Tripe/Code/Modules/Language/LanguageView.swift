@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LanguageView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
+    @EnvironmentObject private var profileCoordinator : ProfileCoordinator
     @State var vm: LanguageViewModel
     @Environment(\.dismiss) var dismiss
 
@@ -10,9 +11,7 @@ struct LanguageView: View {
             content: content,
             vm: vm
         )
-        .navigationDestination(for: Screen.self) {
-            $0.makeView()
-        }
+        .navigationBarHidden(true)
     }
 
     @ViewBuilder private func content() -> some View {
@@ -75,5 +74,5 @@ struct LanguageView: View {
 #Preview {
     LanguageAssembly().build()
         .environmentObject(MainAppCoordinator())
-        .environmentObject(InitialMenuCoordinator())
+        .environmentObject(ProfileCoordinator())
 }

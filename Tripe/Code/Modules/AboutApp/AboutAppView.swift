@@ -17,6 +17,7 @@ struct AboutAppView: View {
             content: content,
             vm: vm
         )
+        .navigationBarHidden(true) 
     }
     
     @ViewBuilder private func content() -> some View {

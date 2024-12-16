@@ -9,20 +9,17 @@ import SwiftUI
 
 struct LoginView: View {
       @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
-      @StateObject private var initialMenuCoordinator = InitialMenuCoordinator()
       @State var vm: LoginViewModel
     
     var body: some View {
-          NavigationStack(path: $initialMenuCoordinator.path) {
-              BaseView(
-                  content: content,
-                  vm: vm
-              )
-              .navigationDestination(for: Screen.self) {
-                  $0.makeView()
-              }
-          }
-      }
+        BaseView(
+            content: content,
+            vm: vm
+        )
+        .navigationDestination(for: Screen.self) {
+            $0.makeView()
+        }
+    }
 
     @ViewBuilder private func content() -> some View {
         
@@ -45,17 +42,6 @@ struct LoginView: View {
     }
     
     @ViewBuilder private func vwHeader() -> some View {
-        HStack{
-            Spacer()
-            
-            Button {
-                initialMenuCoordinator.push(.initialMenu)
-            } label: {
-                Image(systemName: "line.3.horizontal")
-                    .foregroundStyle(Color.primaryApp)
-            }
-        }
-        
         Text("welcome_title".localized)
             .font(.semiBoldTextLargeTitleOpenSans)
     }
@@ -135,5 +121,4 @@ extension LoginView {
 #Preview {
     LoginAssembly().build()
         .environmentObject(MainAppCoordinator())
-        .environmentObject(InitialMenuCoordinator())
 }

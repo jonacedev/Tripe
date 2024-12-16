@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
+    @EnvironmentObject private var profileCoordinator : ProfileCoordinator
+
     @State var vm: ProfileViewModel
     
     var body: some View {
@@ -21,6 +23,10 @@ struct ProfileView: View {
     @ViewBuilder private func content() -> some View {
         VStack {
             Text("Profile View")
+            
+            Button("about".localized, action: {
+                navigateToInitialMenu()
+            })
             
             Button("closeSession".localized, action: {
                 closeSession()
@@ -37,9 +43,14 @@ extension ProfileView {
             mainAppCoordinator.hideLoading()
         }
     }
+    
+    private func navigateToInitialMenu() {
+        profileCoordinator.push(.initialMenu)
+    }
 }
 
 #Preview {
     ProfileAssembly().build()
         .environmentObject(MainAppCoordinator())
+        .environmentObject(ProfileCoordinator())
 }

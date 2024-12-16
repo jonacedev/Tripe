@@ -18,6 +18,7 @@ enum Screen: ScreenProtocol {
     case profile
     case initialMenu
     case language
+    case aboutApp
     
     
     @ViewBuilder func makeView() -> some View {
@@ -30,6 +31,8 @@ enum Screen: ScreenProtocol {
             LanguageAssembly().build()
         case .initialMenu:
             InitialMenuAssembly().build()
+        case .aboutApp:
+            AboutAppAssembly().build()
         }
     }
 }
