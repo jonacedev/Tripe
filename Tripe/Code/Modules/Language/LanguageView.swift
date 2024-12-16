@@ -62,11 +62,28 @@ struct LanguageView: View {
     }
 
     @ViewBuilder private func vwConfirm() -> some View {
+        TPMainButton(title: "imprimir!") {
+            print("---------------")
+            print("Idioma app ahora:")
+            print(vm.currentAppLanguage)
+            print("opcion seleccionada:")
+            print(vm.selectedLanguage)
+            print("es diferente idioma:")
+            print(vm.isDifferentLanguage)
+        }
+        
         TPMainButton(title: "button_ok".localized, action: {
-            vm.changeAppLanguage(to: vm.selectedLanguage)
-            vm.setIfIsDifferentLanguage()
+            btConfirmedTapped()
         }, isDisabled: !vm.isDifferentLanguage)
         .padding(20)
+    }
+}
+
+extension LanguageView {
+    private func btConfirmedTapped(){
+        vm.changeAppLanguage(to: vm.selectedLanguage)
+        vm.setIfIsDifferentLanguage()
+//        profileCoordinator.popToLast()
     }
 }
 

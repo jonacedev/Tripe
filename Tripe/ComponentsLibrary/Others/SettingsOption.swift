@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct InitialMenuOptionCell: View {
+struct SettingsOption: View {
     let icon: String
     let title: String
     let onTap: () -> Void
@@ -26,7 +26,7 @@ struct InitialMenuOptionCell: View {
 }
 
 #Preview {
-    InitialMenuOptionCell(icon: "globe", title: "Idioma") {
+    SettingsOption(icon: "globe", title: "Idioma") {
         print("Tapped Idioma")
     }
 }

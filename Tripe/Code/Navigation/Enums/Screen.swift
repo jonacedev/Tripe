@@ -16,7 +16,7 @@ protocol ScreenProtocol {
 enum Screen: ScreenProtocol {
     case home
     case profile
-    case initialMenu
+    case settings
     case language
     case aboutApp
     
@@ -29,8 +29,8 @@ enum Screen: ScreenProtocol {
             ProfileAssembly().build()
         case .language:
             LanguageAssembly().build()
-        case .initialMenu:
-            InitialMenuAssembly().build()
+        case .settings:
+            SettingsAssembly().build()
         case .aboutApp:
             AboutAppAssembly().build()
         }

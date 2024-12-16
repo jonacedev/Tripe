@@ -1,5 +1,5 @@
 //
-//  InitialMenuViewModel.swift
+//  SettingsViewModel.swift
 //  Tripe
 //
 //  Created by Mei De Blas on 14/12/24.
@@ -8,9 +8,9 @@
 import Foundation
 
 @Observable
-class InitialMenuViewModel: BaseViewModel {
+class SettingsViewModel: BaseViewModel {
     
-    enum InitialMenuSection: CaseIterable {
+    enum SettingsSection: CaseIterable {
         case language
         case aboutApp
         

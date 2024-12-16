@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct InitialMenuView: View {
+struct SettingsView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
     @EnvironmentObject private var profileCoordinator : ProfileCoordinator
-    @State var vm: InitialMenuViewModel
+    @State var vm: SettingsViewModel
     
     
     var body: some View {
@@ -27,7 +27,7 @@ struct InitialMenuView: View {
     
     @ViewBuilder private func navBar() -> some View {
         SimpleNavBar(
-            title: "menu_title".localized,
+            title: "settings_title".localized,
             showBackButton: true,
             onBackButtonTap: {
                 profileCoordinator.popToLast()
@@ -38,8 +38,8 @@ struct InitialMenuView: View {
     @ViewBuilder private func vwOptions() -> some View {
         VStack {
             List {
-                ForEach(InitialMenuViewModel.InitialMenuSection.allCases, id: \.self) { section in
-                    InitialMenuOptionCell(
+                ForEach(SettingsViewModel.SettingsSection.allCases, id: \.self) { section in
+                    SettingsOption(
                         icon: section.icon,
                         title: section.title
                     ) {
@@ -57,12 +57,12 @@ struct InitialMenuView: View {
     }
 }
 
-extension InitialMenuView {
+extension SettingsView {
     
 }
 
 #Preview {
-    InitialMenuAssembly().build()
+    SettingsAssembly().build()
         .environmentObject(MainAppCoordinator())
         .environmentObject(ProfileCoordinator())
 }

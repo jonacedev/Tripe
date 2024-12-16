@@ -22,15 +22,30 @@ struct ProfileView: View {
     
     @ViewBuilder private func content() -> some View {
         VStack {
-            Text("Profile View")
             
-            Button("about".localized, action: {
-                navigateToInitialMenu()
-            })
+            vwHeader()
+            
+            Spacer()
+            
+            Text("Profile View")
             
             Button("closeSession".localized, action: {
                 closeSession()
             })
+        }
+    }
+    
+    @ViewBuilder private func vwHeader() -> some View {
+        HStack{
+            Spacer()
+            
+            Button {
+                profileCoordinator.push(.settings)
+            } label: {
+                Image(systemName: "gear")
+                    .foregroundStyle(Color.primaryApp)
+            }
+            .padding()
         }
     }
 }
@@ -44,8 +59,8 @@ extension ProfileView {
         }
     }
     
-    private func navigateToInitialMenu() {
-        profileCoordinator.push(.initialMenu)
+    private func navigateSettings() {
+        profileCoordinator.push(.settings)
     }
 }
 
