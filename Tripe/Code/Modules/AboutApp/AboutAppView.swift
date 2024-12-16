@@ -9,15 +9,16 @@ import SwiftUI
 
 struct AboutAppView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
+    @EnvironmentObject private var profileCoordinator : ProfileCoordinator
+
     @State var vm: AboutAppViewModel
-    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         BaseView(
             content: content,
             vm: vm
         )
-        .navigationBarHidden(true) 
+        .navigationBarHidden(true)
     }
     
     @ViewBuilder private func content() -> some View {
@@ -32,7 +33,7 @@ struct AboutAppView: View {
             title: "about_app_title".localized,
             showBackButton: true,
             onBackButtonTap: {
-                dismiss()
+                profileCoordinator.popToLast()
             }
         )
     }
@@ -63,5 +64,6 @@ extension AboutAppView {
 #Preview {
     AboutAppAssembly().build()
         .environmentObject(MainAppCoordinator())
+        .environmentObject(ProfileCoordinator())
 }
 

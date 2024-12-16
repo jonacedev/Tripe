@@ -4,7 +4,6 @@ struct LanguageView: View {
     @EnvironmentObject var mainAppCoordinator: MainAppCoordinator
     @EnvironmentObject private var profileCoordinator : ProfileCoordinator
     @State var vm: LanguageViewModel
-    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         BaseView(
@@ -29,7 +28,7 @@ struct LanguageView: View {
             title: "language_title".localized,
             showBackButton: true,
             onBackButtonTap: {
-                dismiss()
+                profileCoordinator.popToLast()
             }
         )
     }

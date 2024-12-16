@@ -16,9 +16,6 @@ struct LoginView: View {
             content: content,
             vm: vm
         )
-        .navigationDestination(for: Screen.self) {
-            $0.makeView()
-        }
     }
 
     @ViewBuilder private func content() -> some View {
