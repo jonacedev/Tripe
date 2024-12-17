@@ -11,7 +11,7 @@ struct TPDivider: View {
     var body: some View {
         Rectangle()
             .frame(height: 1)
-            .foregroundStyle(Color.dividerDefault)
+            .foregroundStyle(Color.divider)
     }
 }
 

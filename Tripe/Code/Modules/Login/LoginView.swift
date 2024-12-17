@@ -58,7 +58,7 @@ struct LoginView: View {
             HStack(alignment: .center) {
                 TPDivider()
                 Text("other_label_title".localized)
-                    .foregroundColor(Color.placeholderDefault)
+                    .foregroundColor(Color.placeholder)
                     .padding(.horizontal, 10)
                 TPDivider()
             }

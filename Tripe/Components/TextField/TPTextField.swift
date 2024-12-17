@@ -33,7 +33,7 @@ public struct TPTextField: View {
     private var placeholder: String
     private var titleLabel: String
     private var lineWidthColor: Color {
-        isFocused ? .primaryApp : .placeholderDefault
+        isFocused ? .primaryApp : .placeholder
     }
    
     public init(
@@ -113,7 +113,7 @@ private extension TPTextField {
     
     func placeholderText() -> Text {
         Text(placeholder)
-            .foregroundStyle(Color.placeholderDefault)
+            .foregroundStyle(Color.placeholder)
             .font(.regularTextSizeMOpenSans)
     }
     
