@@ -14,11 +14,8 @@ class LanguageViewModel: BaseViewModel, ObservableObject {
     @Published var selectedLanguage: String
     @Published var isDifferentLanguage: Bool = false
     
-    var currentAppLanguage = Locale.current.language.languageCode!.identifier
-
-    
     override init() {
-        self.selectedLanguage = currentAppLanguage // al principio el selectedLnaguage tiene que ser el del idioma que tiene la app
+        self.selectedLanguage = LanguageManager.shared.currentAppLanguage
         super.init()
         loadSupportedLanguages()
         setIfIsDifferentLanguage()
@@ -33,32 +30,18 @@ class LanguageViewModel: BaseViewModel, ObservableObject {
             return LanguageOption(name: displayName.capitalized, code: code)
         }
     }
-
-    private var appLanguageKey = "AppleLanguages"
     
-    ///set if is different the current language of the app  to the selected language (to disable or not the confirm button)
     func setIfIsDifferentLanguage() {
-        isDifferentLanguage = selectedLanguage != currentAppLanguage
+        isDifferentLanguage = selectedLanguage != LanguageManager.shared.currentAppLanguage
     }
     
     func setSelectedLanguage(_ selectedLanguage: String) {
         self.selectedLanguage = selectedLanguage
+        setIfIsDifferentLanguage()
     }
     
     func changeAppLanguage(to languageCode: String) {
-        UserDefaults.standard.set([languageCode], forKey: appLanguageKey)
-        UserDefaults.standard.synchronize()
-        
-        guard let path = Bundle.main.path(forResource: languageCode, ofType: "lproj") else {
-            print("Language pack does not exist for: \(languageCode)")
-            return
-        }
-        Bundle.setLanguage(path: path)
-        
-        NotificationCenter.default.post(name: .didChangeLanguage, object: nil)
-        self.selectedLanguage = languageCode
-        currentAppLanguage = selectedLanguage
-        setIfIsDifferentLanguage()
+        LanguageManager().changeAppLanguage(to: languageCode)
     }
 }
 
